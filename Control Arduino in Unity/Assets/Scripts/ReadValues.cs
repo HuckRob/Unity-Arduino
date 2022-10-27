@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports; // To get this to work you need to go into Edit -> Project Settings -> Player -> Other Settings -> Configuration -> Scripting Runtime Version -> .NET 4.x Equivalent (if that is not availible it could be because of the version of unity you are using) (this was built with Unity 2020.3.38f1)
 using System.Diagnostics.Eventing.Reader;
+using UnityEditor.VersionControl;
 
 public class ReadValues : MonoBehaviour
 {
@@ -31,7 +32,8 @@ public class ReadValues : MonoBehaviour
     {
         if (redLedIsOn)
         {
-            port.Write("5");
+            port.Write("R");
+            //port.Write("5");
         }
         else
         {
