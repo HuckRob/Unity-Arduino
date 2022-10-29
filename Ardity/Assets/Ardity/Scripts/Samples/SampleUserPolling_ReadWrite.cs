@@ -33,47 +33,58 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
 
         // If you press one of these keys send it to the serial device. A
         // sample serial device that accepts this input is given in the README.
+
+        //RED led On - Off Start
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Sending Q -- RED LED ON");
+            serialController.SendSerialMessage("Q");
+        }
+
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("Sending A");
+            Debug.Log("Sending A -- RED LED OFF");
             serialController.SendSerialMessage("A");
         }
+        //RED led On - Off End
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        //YELLOW Led on - off Start
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("Sending Z");
-            serialController.SendSerialMessage("Z");
+            Debug.Log("Sending W -- YELLOW LED ON");
+            serialController.SendSerialMessage("W");
         }
-        
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("Sending S -- YELLOW LED OFF");
+            serialController.SendSerialMessage("S");
+        }
+        //Yellow Led on - off End
+        //Blue Led on - off Start
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Sending E -- BLUE LED ON");
+            serialController.SendSerialMessage("E");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("Sending D -- BLUE LED OFF");
+            serialController.SendSerialMessage("D");
+        }
+        //Blue Led on - off End
+        //Green Led on - off Start
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Sending R");
+            Debug.Log("Sending R -- GREEN LED ON");
             serialController.SendSerialMessage("R");
         }
-
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("Sending F");
+            Debug.Log("Sending F -- GREEN LED OFF");
             serialController.SendSerialMessage("F");
         }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Debug.Log("Sending G");
-            serialController.SendSerialMessage("G");
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Debug.Log("Sending B");
-            serialController.SendSerialMessage("B");
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            Debug.Log("Sending Y");
-            serialController.SendSerialMessage("Y");
-        }
-
+        //Green Led on - off End
 
         //---------------------------------------------------------------------
         // Receive data

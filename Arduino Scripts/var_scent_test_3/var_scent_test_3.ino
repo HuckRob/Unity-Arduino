@@ -5,6 +5,8 @@
 
 bool redLightOn = false;
 bool yellowLightOn = false;
+bool blueLightOn = false;
+bool greenLightOn = false;
 
 void setup() {
   Serial.begin(9600);   //Opens the serial port, sets data rate to 9600 bps
@@ -30,44 +32,46 @@ void loop() {
     //incomingByte = Serial.read(); //read the incoming byte
     char c = Serial.read();
     
-
-    if(c == 'A')
+    //Red led Start
+    if(c == 'Q')
     {
       redLightOn = true;
-      c = NULL;
     }
-    if(c == 'Z')
+    if(c == 'A')
     {
       redLightOn = false;
-      c = NULL;
     }
-
-    if(c == 'R')
+    //Red led End
+    //Yellow led Start
+    if(c == 'W')
     {
       yellowLightOn = true;
     }
-    if(c == 'F')
+    if(c == 'S')
     {
       yellowLightOn = false;
     }
-
-    // if(incomingByte = 30)
-    // {
-    //   digitalWrite(BlueLED, HIGH);   //Turn the Blue LED On
-    // }
-    // else
-    // {
-    //   digitalWrite(BlueLED, LOW);    //Turn the Blue LED off
-    // }
-
-    // if(incomingByte = 30)
-    // {
-    //   digitalWrite(GreenLED, HIGH);   //Turn the Green LED On
-    // }
-    // else
-    // {
-    //   digitalWrite(GreenLED, LOW);    //Turn the Green LED off
-    // }
+    //Yellow led End
+    //Blue led Start
+    if(c == 'E')
+    {
+      blueLightOn = true;
+    }
+    if(c == 'D')
+    {
+      blueLightOn = false;
+    }
+    //Blue led End
+    //Green led Start
+    if(c == 'R')
+    {
+      greenLightOn = true;
+    }
+    if(c == 'F')
+    {
+      greenLightOn = false;
+    }
+    //Green led End
     c = NULL;
   }
 
@@ -81,6 +85,18 @@ void loop() {
     digitalWrite(YellowLED, HIGH);   //Turn the Yellow LED On
   }else{
     digitalWrite(YellowLED, LOW);    //Turn the Yellow LED off
+  }
+
+  if(blueLightOn == true){
+    digitalWrite(BlueLED, HIGH);   //Turn the Blue LED On
+  }else{
+    digitalWrite(BlueLED, LOW);    //Turn the Blue LED off
+  }
+
+  if(greenLightOn == true){
+    digitalWrite(GreenLED, HIGH);   //Turn the Green LED On
+  }else{
+    digitalWrite(GreenLED, LOW);    //Turn the Green LED off
   }
   //delay(1000);
 }
