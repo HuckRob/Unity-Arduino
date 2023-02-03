@@ -162,10 +162,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: portName
-      value: COM5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65acf0cbf56b80419f74ebf0bc845f4, type: 3}
 --- !u!1 &642118326 stripped
@@ -185,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM5
+  portName: COM3
   baudRate: 9600
   messageListener: {fileID: 0}
   reconnectionDelay: 1000
@@ -219,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1815ab8d05e6d41a977b43884b4079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serialController: {fileID: 0}
+  serialController: {fileID: 642118327}
 --- !u!4 &748090407
 Transform:
   m_ObjectHideFlags: 0
