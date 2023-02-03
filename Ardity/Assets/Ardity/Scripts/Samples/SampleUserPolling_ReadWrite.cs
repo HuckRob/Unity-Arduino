@@ -31,34 +31,35 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
     public float scentTime = 60.0f;
     public float breakTime = 5.0f;
 
-    [SerializeField]  private int currentScent = 1;
+    private int currentScent = 1;
     private bool firstAtomizerOn = false;
     private bool secondAtomizerOn = false;
     private bool thirdAtomizerOn = false;
     private bool fourthAtomizerOn = false;
 
-    [SerializeField] private float scentTimer;
-    [SerializeField] private float breakTimer;
+    private float scentTimer;
+    private float breakTimer;
+    private int[] atomizerOrder = new int[4]; //Array with the lenght of 4 because there are only 4 atomoizers
+    private int currentTest = 0;                //Current test running, Starting at zero beacuase it is used to index the atomizerOrder array
     // Initialization
     void Start()
     {
         serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
         scentTimer = scentTime;
         breakTimer = breakTime;
+        PopulateOrderArray();
+        currentScent = atomizerOrder[currentTest];
     }
 
     // Executed each frame
     void Update()
     {
-        RunTest();
-        if(currentScent < 5) // Becase there are only 4 scents and we dont need the timer to keep running afer that
+        if(currentTest < 4) // Becase there are only 4 scents and we dont need the timer to keep running afer that
         {
+        RunTest();
         scentTimer -= Time.deltaTime;
         if(scentTimer < 0) breakTimer -= Time.deltaTime; //run break timer when scent timer is up
         }
-
-        
-
         //---------------------------------------------------------------------
         // Receive data
         //---------------------------------------------------------------------
@@ -169,6 +170,35 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
     {
         scentTimer = scentTime;
         breakTimer = breakTime;
-        currentScent += 1;
+        currentTest += 1;
+        if (currentTest > 3) return;
+        currentScent = atomizerOrder[currentTest];
+    }
+
+    private void PopulateOrderArray()
+    {
+        //Setting Scent One
+        if (ScentOne == AtomizerOneContents) atomizerOrder[0] = 1;
+        if (ScentOne == AtomizerTwoContents) atomizerOrder[0] = 2;
+        if (ScentOne == AtomizerThreeContnets) atomizerOrder[0] = 3;
+        if (ScentOne == AtomizerFourContents) atomizerOrder[0] = 4;
+
+        //Setting Scent Two
+        if (ScentTwo == AtomizerOneContents) atomizerOrder[1] = 1;
+        if (ScentTwo == AtomizerTwoContents) atomizerOrder[1] = 2;
+        if (ScentTwo == AtomizerThreeContnets) atomizerOrder[1] = 3;
+        if (ScentTwo == AtomizerFourContents) atomizerOrder[1] = 4;
+
+        //Setting Secnt Three
+        if (ScentThree == AtomizerOneContents) atomizerOrder[2] = 1;
+        if (ScentThree == AtomizerTwoContents) atomizerOrder[2] = 2;
+        if (ScentThree == AtomizerThreeContnets) atomizerOrder[2] = 3;
+        if (ScentThree == AtomizerFourContents) atomizerOrder[2] = 4;
+
+        //Setting Scent Four
+        if (ScentFour == AtomizerOneContents) atomizerOrder[3] = 1;
+        if (ScentFour == AtomizerTwoContents) atomizerOrder[3] = 2;
+        if (ScentFour == AtomizerThreeContnets) atomizerOrder[3] = 3;
+        if (ScentFour == AtomizerFourContents) atomizerOrder[3] = 4;
     }
 }

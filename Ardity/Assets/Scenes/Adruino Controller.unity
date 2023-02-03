@@ -162,7 +162,10 @@ MonoBehaviour:
   AtomizerThreeContnets: 3
   AtomizerFourContents: 0
   scentTime: 3
-  breakTime: 5
+  breakTime: 3
+  currentScent: 1
+  scentTimer: 0
+  breakTimer: 0
 --- !u!4 &12007008
 Transform:
   m_ObjectHideFlags: 0
